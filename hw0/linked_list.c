@@ -21,10 +21,28 @@ static node_struct* head;
 // you will need to maintain the links and properly place the new element
 void insert_in_order(node_struct* new_element) {
 
-    node_struct* curr = head;
-    node_struct* prev;
-    
+    if (head == NULL) {
+        head = new_element;
+        return;
+    }
 
+    if (new_element->value < head->value) {
+        new_element->next = head;
+        head = new_element;
+        return;
+    }
+    node_struct* curr = head->next;
+    node_struct* prev = head;
+    while (curr != NULL) {
+        if (new_element->value < curr->value) {
+            prev->next = new_element;
+            new_element->next = curr;
+            return;
+        }
+        prev = curr;
+        curr = curr->next;
+    }
+    prev->next = new_element;
 }
 
 // this function creates a new entry into the list to be inserted
