@@ -13,6 +13,9 @@ Filter.o: Filter.c App.h
 Scale.o: Scale.c App.h
 	gcc -c Scale.c -o Scale.o
 
+program: program.c
+	gcc -Wall -g -o program program.c
+
 all: App.o Compress.o Differentiate.o Filter.o Scale.o
 	gcc App.o Compress.o Differentiate.o Filter.o Scale.o -o App
 
