@@ -2,20 +2,16 @@
 #include "stdlib.h"
 
 int main(int argc, char** argv) {
-  int x = 20;
-  int* y = &x;
-  int* z = malloc(sizeof(int));
-  *z = 50;
-  int* w = malloc(sizeof(int) * 3);
-  w[0] = 5;
-  w[1] = 6;
-  w[2] = 7;
-  printf("Stack: Address=%p, Value=%d\n", (void*)&x, x);
-  printf("Stack: Address=%p, Value=%p\n", (void*)&y, y);
-  printf("Stack: Address=%p, Value=%p\n", (void*)&z, z);
-  printf("Stack: Address=%p, Value=%p\n", (void*)&w, w);
-  printf("Heap: Address=%p, Value=%d\n", (void*)z, *z);
-  printf("Heap: Address=%p, Value=%d\n", (void*)w, w[0]);
-  printf("Heap: Address=%p, Value=%d\n", (void*)&(w[1]), w[1]);
-  printf("Heap: Address=%p, Value=%d\n", (void*)&(w[2]), w[2]);
+  int a[2][4] = {{10, 20, 30, 40}, {50, 60, 70, 80}};
+  int* b[2] = {a[0], a[1]};
+  printf("Stack: Address=%p, Value=%d\n", &(a[0][0]), a[0][0]);
+  printf("Stack: Address=%p, Value=%d\n", &(a[0][1]), a[0][1]);
+  printf("Stack: Address=%p, Value=%d\n", &(a[0][2]), a[0][2]);
+  printf("Stack: Address=%p, Value=%d\n", &(a[0][3]), a[0][3]);
+  printf("Stack: Address=%p, Value=%d\n", &(a[1][0]), a[1][0]);
+  printf("Stack: Address=%p, Value=%d\n", &(a[1][1]), a[1][1]);
+  printf("Stack: Address=%p, Value=%d\n", &(a[1][2]), a[1][2]);
+  printf("Stack: Address=%p, Value=%d\n", &(a[1][3]), a[1][3]);
+  printf("Stack: Address=%p, Value=%p\n", b, b[0]);
+  printf("Stack: Address=%p, Value=%p\n", b + 1, b[1]);
 }
